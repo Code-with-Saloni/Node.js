@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Library</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Music Library</h1>
+  <a href="/add">Add New Album</a>
+
+ 
+
+  <ul>
+    <% albums.forEach(album => { %>
+      <li>
+        <strong><%= album.name %></strong> by <%= album.artist %> (Genre: <%= album.genre %>)
+        <p>Play Count: <%= album.playCount %></p>
+
+        <!-- Play Button for Song -->
+        <% if (album.songFile) { %>
+          <audio controls>
+            <source src="/music/<%= album.songFile %>" type="audio/mpeg">
+            Your browser does not support the audio tag.
+          </audio>
+        <% } else { %>
+          <p>No song uploaded for this album.</p>
+        <% } %>
+
+        <!-- Play Count Increment Button -->
+        
+          <button type="submit">Play</button>
+        </form>
+
+        <!-- Edit and Delete Links -->
+        <a href="/edit/<%= album.id %>">Edit</a>
+      
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>
