@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= album ? 'Edit' : 'Add' %> Album</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1><%= album ? 'Edit' : 'Add' %> Album</h1>
+  <form action="<%= album ? '/edit/' + album.id : '/add' %>" method="POST" enctype="multipart/form-data">
+    <label for="name">Album Name:</label>
+    <input type="text" id="name" name="name" value="<%= album ? album.name : '' %>" required>
+    <label for="artist">Artist:</label>
+    <input type="text" id="artist" name="artist" value="<%= album ? album.artist : '' %>" required>
+    <label for="genre">Genre:</label>
+    <input type="text" id="genre" name="genre" value="<%= album ? album.genre : '' %>">
+    <label for="playCount">Play Count:</label>
+    <input type="number" id="playCount" name="playCount" value="<%= album ? album.playCount : 0 %>" min="0">
+    
+    <!-- File Upload Field for Song -->
+    <label for="songFile">Song File (mp3):</label>
+    <input type="file" id="songFile" name="songFile" accept="audio/mpeg">
+    
+    <button type="submit"><%= album ? 'Update' : 'Add' %> Album</button>
+  </form>
+</body>
+</html>
